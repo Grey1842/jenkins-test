@@ -1,12 +1,12 @@
 pipeline {
   agent any
   environment {
-    DOCKER_REGISTRY = 'your-dockerhub-username' // change this
+    DOCKER_REGISTRY = 'grey1842' // change this
   }
   stages {
     stage('Checkout Source') {
       steps {
-        git url: 'https://github.com/your-username/your-repo.git', branch: 'main' // update URL
+        git url: 'https://github.com/Grey1842/jenkins-test.git', branch: 'main' // update URL
       }
     }
     stage('Build & Push Docker Images') {
