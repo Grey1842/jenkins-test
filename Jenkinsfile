@@ -34,7 +34,7 @@ echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
 
             // Tag and push image
             def imageTag = "${DOCKER_REGISTRY}/${IMAGE_NAME}:${env.BUILD_NUMBER}"
-            bat "docker tag ${IMAGE_NAME}:latest ${imageTag}"
+            bat "docker tag ${IMAGE_NAME}:${env.BUILD_NUMBER} ${imageTag}"
             bat "docker push ${imageTag}"
           }
         }
