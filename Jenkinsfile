@@ -24,7 +24,7 @@ pipeline {
 
             // More secure Docker login
             bat """
-              echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
+              echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin %DOCKER_PASSWORD%
             """
 
             // Build the Docker image
