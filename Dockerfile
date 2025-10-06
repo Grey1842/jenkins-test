@@ -6,7 +6,7 @@ COPY . .
 
 FROM node:20-alpine AS final
 WORKDIR /app
-COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app .
+COPY --from=build /app/node_modules ./node_modules
 EXPOSE 3000
 CMD ["npm", "start"]
