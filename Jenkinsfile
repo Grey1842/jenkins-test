@@ -24,11 +24,9 @@ pipeline {
 
             // More secure Docker login
             bat """
-@echo off
-echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
-"""
-
-
+            @echo off
+            echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
+            """
             // Build the Docker image
             bat "docker-compose build web"
 
@@ -49,7 +47,7 @@ echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
             docker stop node-web node-mongo-db || exit /b 0
             docker rm node-web node-mongo-db || exit /b 0
             set BUILD_NUMBER=%BUILD_NUMBER%
-            docker-compose up -d --force-recreate
+            docker-compose up -d 
           """
         }
       }
