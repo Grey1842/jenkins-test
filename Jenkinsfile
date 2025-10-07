@@ -44,10 +44,9 @@ pipeline {
         script {
           bat """
             @echo off
-            docker stop node-web node-mongo-db || exit /b 0
-            docker rm node-web node-mongo-db || exit /b 0
-            set BUILD_NUMBER=%BUILD_NUMBER%
-            docker-compose up -d 
+            docker-compose down || exit /b 0
+            set BUILD_NUMBER=${env.BUILD_NUMBER}
+            docker-compose up -d
           """
         }
       }
