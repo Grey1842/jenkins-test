@@ -45,9 +45,11 @@ echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% --password-stdin
       steps {
         script {
           bat """
-            docker stop node-web node-mongo-db || exit 0
-            docker rm node-web node-mongo-db || exit 0
-            set BUILD_NUMBER=${env.BUILD_NUMBER} && docker-compose up -d --force-recreate
+            @echo off
+            docker stop node-web node-mongo-db || exit /b 0
+            docker rm node-web node-mongo-db || exit /b 0
+            set BUILD_NUMBER=%BUILD_NUMBER%
+            docker-compose up -d --force-recreate
           """
         }
       }
